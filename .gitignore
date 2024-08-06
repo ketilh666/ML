@@ -1,0 +1,5 @@
+# Files and folders to ignore
+*/__pycache__
+*/png*/*
+build
+ml.egg-info
