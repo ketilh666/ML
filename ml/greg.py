@@ -844,6 +844,7 @@ def plot_pred_maps(df_pred, key_t, **kwargs):
     # Get the kwargs:
     key_x = kwargs.get('key_x', 'lon') # Column key for x or longitude 
     key_y = kwargs.get('key_y', 'lat') # Column key for y or latitude    
+    scl = kwargs.get('scl', 1.0)
     vmin = kwargs.get('vmin', np.nanmin(df_pred[pred_perc[0]]))
     vmax = kwargs.get('vmax', np.nanmax(df_pred[pred_perc[0]]))
     xmin = kwargs.get('xmin', np.min(df_pred[key_x]))
@@ -859,14 +860,7 @@ def plot_pred_maps(df_pred, key_t, **kwargs):
     title  = kwargs.get('title', 'Predicted target ') # Plot title
     aspect = kwargs.get('aspect', 'equal')
     verbose = kwargs.get('verbose', 0)
-    
-    # UTM or lon,lat?
-    if (key_x[0].lower() == 'x') | (key_x.lower() == 'y'):
-        scl = 1.0e-3
-        unit_x = unit_y = '[km]'
-    else:
-        scl = 1.0
-    
+        
     # Must be given for reshape:
     nx = kwargs.get('nx', 0)
     ny = kwargs.get('ny', 0)
@@ -884,8 +878,12 @@ def plot_pred_maps(df_pred, key_t, **kwargs):
     mask = np.ones([ny, nx], dtype=float)
     
 #    xsp, ysp = 10,12
-    np_row, np_col = 1, len(pred_perc)    
-    scl_xsize, scl_ysize = 3.0*(xmax-xmin)/(ymax-ymin), 5.0
+    if nx>ny:
+        np_row, np_col = len(pred_perc), 1
+    else:
+       np_row, np_col = 1, len(pred_perc)
+
+    scl_xsize, scl_ysize = 1.5*3.0*(xmax-xmin)/(ymax-ymin), 0.8*5.0
     xsize, ysize= scl_xsize*np_col, scl_ysize*np_row    
     
     xtnt = [scl*np.min(df_pred[key_x]), scl*np.max(df_pred[key_x]), 

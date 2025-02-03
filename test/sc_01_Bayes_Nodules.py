@@ -223,27 +223,6 @@ reg_name, srun = 'HistBayesRegressor', crun + ': '
 lon1, lon2, lat1, lat2 = [aoi[key] for key in ['lon1', 'lon2', 'lat1', 'lat2']]
 nlon, nlat, dlon, dlat = [aoi[key] for key in ['nlon', 'nlat', 'dlat', 'dlat']]
 
-## Box core samples
-#title='Box-core nodule abundance [kg/m2]'
-#fig = greg.plot_targ_samp(df_smp, key_t, key_x=key_x, key_y=key_y,
-#                          vmin=0, vmax=40, poly=poly_isa, title=title,
-#                          xmin=lon1, xmax=lon2, ymin=lat1, ymax=lat2,
-#                          unix_x=unit_x, unit_y=unit_y, unit_t=unit_t)
-#fig.savefig(cdir + crun + 'CCZ_Box_Core_Abundance_Picks.png')
-
-## Plot feature maps:
-#title = 'Feature maps'
-#fig = greg.plot_feat_maps(df_grd, key_x=key_x, key_y=key_y,
-#                          nx = nlon, ny=nlat, poly=poly_isa,
-#                          xmin=lon1, xmax=lon2, ymin=lat1, ymax=lat2,
-#                          unit_x=unit_x, unit_y=unit_y)
-#fig.savefig(cdir + crun + 'CCZ_Feature_Maps.png')
-
-## Plot correlation heatmap:
-#title = 'Feature correlation'
-#fig = greg.plot_correl(df_smp, key_t, key_x=key_x, key_y=key_y, title=title)
-#fig.savefig(cdir + crun + 'CCZ_Feature_Correlation.png')
-
 #------------------------------------------------------------
 #  PLot Screening Bayes results
 #------------------------------------------------------------

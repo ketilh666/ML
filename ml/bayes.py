@@ -22,10 +22,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import r2_score, explained_variance_score
 from sklearn.cluster import k_means
 
-
 #-----------------------------------------------------------------
 # HistBayesRegressor: 
-# New method using hitograms to obtain conditional probability
+# New method using histograms to obtain conditional probability
 # distributions for use in Bayes theorem.
 # Computing posterior mean and variance of the target variable
 # Object methods: self.fit(X,y), self.precict(X)
