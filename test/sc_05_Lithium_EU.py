@@ -26,7 +26,7 @@ import ml.gclas as gclas
 # Read data from G-drive
 #----------------------------------------
 
-block=True
+block=False
 
 exl = '../data_Li/'
 pkl = '../data_Li/'
@@ -166,6 +166,7 @@ elif scaling == 'Normalization':
 #------------------------------------
 
 quant = df_smp[key_t].copy()
+df_smp[key_t] = 'N'
 df_smp.loc[quant<50, key_t] = 'L'
 df_smp.loc[quant>=50, key_t]  = 'H'
 
@@ -192,7 +193,7 @@ etc, test = gclas.fit_cv(etc, df_smp, key_t,
 try:  
     ax = test['fig_clu'].get_axes()[0]
     ax.set_title(f'run {krun}{version}: Train&Test ')
-    test['fig_clu'].savefig(pdir + crun + '-kMeans_clusters.png')            
+    test['fig_clu'].savefig(png + crun + '-kMeans_clusters.png')            
 except: 
     pass
 
